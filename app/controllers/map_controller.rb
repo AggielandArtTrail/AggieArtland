@@ -1,3 +1,6 @@
 class MapController < ApplicationController
-    def show; end
+    def show
+    @art_pieces = ArtPiece.all
+    
+    end
 end
