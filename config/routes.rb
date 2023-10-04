@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
   post 'logout', to: 'sessions#destroy'
   get  'logout', to: 'sessions#destroy'
+
+  get 'map', to: 'map#show'
 end
