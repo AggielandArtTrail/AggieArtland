@@ -1,26 +1,103 @@
 <!-- app/views/users/new.html.erb -->
+<style>
+  body {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #500000;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+  .form-wrapper {
+    width: 300px;
+    display: flex;
+    padding: 20px 40px;
+    border-radius: 10px;
+    border-color: #aaaaaa
+    box-shadow: 0px 10px 50px #555;
+    background-color: #ffffff;
+}
+
+  label {
+    font-size: 1em;
+    display: block; 
+    margin-bottom: 0.25em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: #222;
+  }
+    
+  input {
+    padding: 10px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #cfcfcf;
+  }
+
+  h1 {
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-weight: bold ;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    margin-top: 20%
+  }
+  .button{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.button:hover{
+  background-color: #519e8a;
+  color: #ffffff;
+  font-weight: bold
+}
+
+.field {
+  margin-bottom: 15px; /* Add space between each input field */
+}
+</style>
+
 <h1>Sign Up</h1>
 
-<%= form_for @user, url: users_path do |f| %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
+<div class='form-wrapper'>
+  <%= form_for @user, url: users_path do |f| %>
+    <div class="field">
+      <%= f.label :email , class:'label'%>
+      <%= f.email_field :email %>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <div class="field">
+      <%= f.label :name , class:'label'%>
+      <%= f.text_field :name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
+    <div class="field">
+      <%= f.label :password, class:'label' %>
+      <%= f.password_field :password %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
+    <div class="field">
+      <%= f.label :password_confirmation, class:'label' %>
+      <%= f.password_field :password_confirmation %>
+    </div>
 
-  <%= f.submit 'Sign Up' %>
-<% end %>
+    <div>
+      <%= f.submit 'Sign Up', class: 'button'%>
+    </div>
+  <% end %>
+</div>
