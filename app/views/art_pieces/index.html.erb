@@ -1,3 +1,4 @@
+<!--
 <p style="color: green"><%= notice %></p>
 
 <h1> Your Location </h1>
@@ -8,8 +9,10 @@
 <p>Your Latitude   : <span id="lat"><%= @latitude %></span> </p>
 <p>Your Longitude  : <span id="long"><%= @longitude %></span> </p>
 <p>Accuracy in 'm' : <span id="acc"> 0 </span> </p>
+-->
 
-<h1> Admin page - List of Art Pieces</h1>
+<h1> Admin page <h1>
+<h3> List of Art Pieces</h3>
 <div id="art_pieces">
   <% @art_pieces.each do |art_piece| %>
     <%= render art_piece %>
