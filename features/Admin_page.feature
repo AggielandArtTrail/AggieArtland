@@ -27,3 +27,9 @@ Feature: Admin Page
     And I have a piece with id 1
     When I click on show this art piece with id 1
     Then I should be able to see all the details of a certain art piece
+
+  Scenario: Upload Art Piece Image
+    Given I am in the edit art piece page with id 1
+    When I click on "Upload Icon"
+    And I choose a file from the file picker
+    Then I should see the chosen file as the new art piece icon

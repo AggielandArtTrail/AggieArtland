@@ -124,4 +124,56 @@ RSpec.describe ArtPiecesController, type: :controller do
       }.to change(ArtPiece, :count).by(-1)
     end
   end
+
+
+  
+  describe 'Admin user' do
+    let(:admin_user) { FactoryBot.create(:admin_user) }
+    let(:user) { FactoryBot.create(:user) }
+    let(:art_piece) { FactoryBot.create(:art_piece) }
+    
+    context 'when logged in as admin' do
+      before do
+        # Simulate authentication by setting a user_id in the session
+        session[:user_id] = admin_user.id
+      end
+    
+      # it 'renders the admin page' do
+      #   get :admin
+      #   expect(response).to render_template(:admin)
+      # end
+      it 'renders the edit template' do
+        get :edit, params: { id: art_piece.id }
+
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    context 'when not logged in as admin' do
+      before do
+        # Simulate authentication by setting a user_id in the session
+        session[:user_id] = user.id
+      end
+    
+      # it 'redirects to the login page' do
+      #   get :admin
+      #   expect(response).to redirect_to(login_path)
+      # end
+    
+      # it 'sets a flash error message' do
+      #   get :admin
+      #   expect(flash[:error]).to be_present
+      # end
+      it 'redirects to the show art piece page' do
+        get :edit, params: { id: art_piece.id }
+        expect(response).to redirect_to(show_art_piece_path)
+      end
+    
+      it 'sets an not-allowed flash error message' do
+        get :edit, params: { id: art_piece.id }
+        # expect(flash[:error]).to be_present
+        expect(flash[:error]).to match(/You do not have the required permissions to edit art pieces./)
+      end
+    end
+  end
 end
