@@ -1,4 +1,5 @@
 <!-- sessions/login.html.erb -->
+<p style="color: red"><%= notice %></p>
 <style>
   body {
       height: 100%;
@@ -86,14 +87,18 @@ border: 2px solid #cfcfcf;
         <%= f.email_field :email, name: 'session[email]' %>
       </div>
 
-      <div class="password">
-        <%= f.label :password, class:'label'%>
-        <%= f.password_field :password, name: 'session[password]' %>
-      </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, name: 'session[password]' %>
+  </div>
 
-      <div>
-        <%= f.submit 'Log in', class: "button" %>
-      </div>
-    <% end %>
+  <div class="field">
+    <%= link_to "Forgot your password?", password_reset_path %>
+  </div>
+
+    <div>
+      <%= f.submit 'Log in', class: "button" %>
+    </div>
+  <% end %>
   </div>
 </body>

@@ -1,20 +1,18 @@
-<!--
 <p style="color: green"><%= notice %></p>
 
 <h1> Your Location </h1>
-<div data-controller="geolocation" data-action="geolocation#search">
-  <%# <button data-action="geolocation#search">Find me</button> %>
-</div>
-
-<p>Your Latitude   : <span id="lat"><%= @latitude %></span> </p>
-<p>Your Longitude  : <span id="long"><%= @longitude %></span> </p>
-<p>Accuracy in 'm' : <span id="acc"> 0 </span> </p>
--->
 
 <h1> Admin page <h1>
 <h3> List of Art Pieces</h3>
 <div id="art_pieces">
   <% @art_pieces.each do |art_piece| %>
+
+    <% if art_piece.has_icon? %>
+      <%= image_tag art_piece.icon_name, size: "100x100" %>
+    <% else %>
+      <%= image_tag "https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg", size: "100x100" %>
+    <% end %>
+
     <%= render art_piece %>
     <p>
       <%= link_to "Show this art piece", art_piece %>
@@ -24,51 +22,3 @@
 <br>
 
 <%= link_to "New art piece", new_art_piece_path %>
-
-<div id="map" style="height: 400px; width: 100%;"></div>
-
-<script>
-  function initMap() {
-    var latitude = parseFloat(document.getElementById('lat').innerHTML);
-    var longitude = parseFloat(document.getElementById('long').innerHTML);
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: latitude, lng: longitude},
-      zoom: 15
-    });
-
-    var marker = new google.maps.Marker({
-      position: {lat: latitude, lng: longitude},
-      map: map,
-      title: 'Your Location',
-      icon: {
-        url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-      }
-    });
-
-    // Array of art pieces
-    var artPieces = <%= @art_pieces.to_json.html_safe %>;
-
-    artPieces.forEach(function(artPiece) {
-      new google.maps.Marker({
-        position: {lat: artPiece.latitude, lng: artPiece.longitude},
-        map: map,
-        title: artPiece.name,
-        icon: {
-          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-        }
-      });
-    });
-  }
-
-  navigator.geolocation.getCurrentPosition(function(position) {
-    document.getElementById('lat').textContent = position.coords.latitude;
-    document.getElementById('long').textContent = position.coords.longitude;
-    document.getElementById('acc').textContent = position.coords.accuracy;
-
-    // Call the initMap function after getting the geolocation data
-    initMap();
-  });
-</script>
-
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEzQSINw3YNC7yj7sxOiHcks8FKYXcwk0&callback=initMap"></script>

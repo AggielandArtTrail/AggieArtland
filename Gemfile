@@ -44,6 +44,9 @@ gem "bootsnap", require: false
 
 gem 'bcrypt', '~> 3.1.7'
 
+# image processing
+gem "mini_magick"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

@@ -56,6 +56,17 @@ Then('I should see the login page') do ||
   expect(page).to have_current_path(login_path)
 end
 
+Then('I should see a notice {string}') do |string|
+    expect(page).to have_content(string)
 
+end
+
+Then('I should receive an email to {string}') do |string|
+  expect { UserMailer.forgot_password(User.find_by(email:string)).deliver }.to change { ActionMailer::Base.deliveries.count }.by(1)
+end
+
+Given('I am on the reset password page') do ||
+    visit password_reset_edit_path
+end
 
 

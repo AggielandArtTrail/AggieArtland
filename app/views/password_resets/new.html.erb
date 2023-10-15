@@ -1,0 +1,9 @@
+<%= content_tag :h1, "Forgot Password" %>
+
+
+<%= form_with url: password_reset_path do |form| %>
+  <%= form.label :email %>
+  <%= form.email_field :email, autofocus: true %>
+
+  <%= form.submit "Reset Password" %>
+<% end %>

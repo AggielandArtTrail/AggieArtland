@@ -54,9 +54,14 @@
 #     pending # Write code here that turns the phrase above into concrete actions
 #   end
   
+  Then('I should see an interactive map displaying the trail\'s locations and artists\' exhibits') do
+    pending # Write code here that turns the phrase above into concrete actions
+  end
+
 #   Then('I should see an interactive map displaying the trails locations and artists exhibits') do
 #     pending # Write code here that turns the phrase above into concrete actions
 #   end
+
   
 #   Given('I am viewing exhibits on the interactive map') do
 #     pending # Write code here that turns the phrase above into concrete actions

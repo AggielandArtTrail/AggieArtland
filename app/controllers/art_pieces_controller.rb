@@ -18,6 +18,18 @@ class ArtPiecesController < ApplicationController
 
   # GET /art_pieces/1/edit
   def edit
+    # art_piece = ArtPiece.find_by(id: params[:id])
+    
+    # user_id = session[:user_id]
+    # user = User.find_by(id: user_id)
+    
+    # if user == nil 
+    #   flash[:notice] = 'You must be logged in to access this section.'
+    #   redirect_to login_path
+    # elsif !user.is_admin?
+    #   flash[:notice] = 'You do not have the required permissions to edit art pieces.'
+    #   redirect_to show_art_piece_path(art_piece)
+    # end
   end
 
   # POST /art_pieces or /art_pieces.json
@@ -56,6 +68,29 @@ class ArtPiecesController < ApplicationController
       format.html { redirect_to art_pieces_url, notice: "Art piece was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def upload_icon
+    art_piece = ArtPiece.find_by(id: params[:id])
+    icon = params[:picture]
+
+    image = MiniMagick::Image.open(File.open(params[:picture].tempfile))
+    image.resize "500x500"
+
+    filename = 'art_piece_icon_' + art_piece.id.to_s + '.png'
+    # folder = Rails.root.join('public', 'icons')
+    folder = Rails.root.join('app', 'assets', 'images')
+    FileUtils.mkdir_p(folder) unless File.exist?(folder)
+
+    path = File.join folder, filename
+
+    # File.open(path, 'wb') do |file|
+    #   file.write(icon.read)
+    # end
+    image.write(path)
+
+    flash[:notice] = 'Art piece icon successfully changed.'
+    redirect_to show_art_piece_path(art_piece)
   end
 
   private
