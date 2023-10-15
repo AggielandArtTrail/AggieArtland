@@ -73,6 +73,15 @@ border: 2px solid #cfcfcf;
   color: #ffffff;
   font-weight: bold
 }
+
+.field{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
 </style>
 
 <body>
@@ -80,25 +89,26 @@ border: 2px solid #cfcfcf;
     Aggieland Art Trail 
   </h1>
 
-  <div class="form-wrapper">
-    <%= form_for(:session, url: login_path) do |f| %>
-      <div class="email">
-        <%= f.label :email, class:'label'%>
-        <%= f.email_field :email, name: 'session[email]' %>
-      </div>
+    <div class="form-wrapper">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <div class="email">
+          <%= f.label :email, class:'label'%>
+          <%= f.email_field :email, name: 'session[email]' %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, name: 'session[password]' %>
-  </div>
-
-  <div class="field">
-    <%= link_to "Forgot your password?", password_reset_path %>
-  </div>
+    <div class="password">
+      <%= f.label :password %>
+      <%= f.password_field :password, name: 'session[password]' %>
+    </div>
 
     <div>
       <%= f.submit 'Log in', class: "button" %>
     </div>
+
+    <div class="field">
+      <%= link_to "Forgot your password?", password_reset_path %>
+    </div>
+
   <% end %>
   </div>
 </body>
