@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_27_193313) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_06_192922) do
   create_table "art_pieces", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -22,6 +22,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_27_193313) do
     t.string "artist"
     t.index ["latitude"], name: "index_art_pieces_on_latitude"
     t.index ["longitude"], name: "index_art_pieces_on_longitude"
+  end
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "locations", force: :cascade do |t|

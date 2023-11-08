@@ -1,32 +1,32 @@
+<div class="container mt-4">
 <h4>Admin Panel</h4>
-
 <%= form_tag admin_panel_users_path, method: :get, class: 'form-inline mb-4' do %>
   <div class="form-group">
     <%= text_field_tag :search, params[:search], class: 'form-control', style: 'width: auto; margin-top: 15px;', placeholder: 'Search for users' %>
   </div>
   <%= submit_tag 'Search', class: 'btn btn-primary', style: 'margin-top: 15px;' %>
 <% end %>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Admin</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.name %></td>
-        <td>
-          <%= form_tag toggle_admin_users_path, method: :post do %>
-            <%= hidden_field_tag :user_id, user.id %>
-            <%= check_box_tag 'admin', 'true', user.is_admin?, onchange: 'this.form.submit()' %>
-          <% end %>
-        </td>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Admin</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.name %></td>
+          <td>
+            <%= form_tag toggle_admin_users_path, method: :post do %>
+              <%= hidden_field_tag :user_id, user.id %>
+              <%= check_box_tag 'admin', 'true', user.is_admin?, onchange: 'this.form.submit()' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
