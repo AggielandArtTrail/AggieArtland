@@ -3,6 +3,8 @@
   <%= image_tag @art_piece.get_icon_src, size: "100x100" %>
 
   <%= render @art_piece %>
+  <p>Your location: <%= @art_piece.format_location(session[:latitude].to_f, session[:longitude].to_f) %></p>
+  <p>You are approximately <%= @art_piece.distance_to_pretty(session[:latitude].to_f, session[:longitude].to_f) %> away from this art piece.</p>
 
   <div>
     <div class = "row">
@@ -25,5 +27,6 @@
         </div>
       <% end %>
     </div>      
+
 </div>
 

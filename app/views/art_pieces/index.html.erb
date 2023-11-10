@@ -20,7 +20,11 @@
         <%= link_to "New art piece", new_art_piece_path, class: "btn btn-primary" %>
       </div>
     </div>
-
+    <%= render art_piece %>
+    <p>Distance to you: <%= art_piece.distance_to_pretty(session[:latitude].to_f, session[:longitude].to_f) %></p>
+    <p>
+      <%= link_to "Show this art piece", art_piece %>
+    </p>
   <% end %>
 </div>
 <br>

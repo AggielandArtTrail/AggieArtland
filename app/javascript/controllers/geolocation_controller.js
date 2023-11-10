@@ -24,6 +24,14 @@ export default class extends Controller {
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
     // location.assign(`/locations?place=${crd.latitude},${crd.longitude}`)
+
+    $.post("map/updateloc",{latitude: crd.latitude, longitude: crd.longitude, accuracy: crd.accuracy}, function(data, status){
+      // console.log("status: " + status);
+      // if(status == "success")
+      // {
+      //   alert(data);
+      // } 
+   });
   }
 
   error(err) {
