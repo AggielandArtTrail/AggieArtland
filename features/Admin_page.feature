@@ -6,6 +6,7 @@ Feature: Admin Page
   Scenario: List all the Art Pieces in the database
     Given I have signed up with email "abc@gmail.com", name "a_admin", and password "asdfasdf"
     And I am logged in with email "abc@gmail.com" and password "asdfasdf"
+    #Given I am logged in with email "admin@example.com" and password "adminpassword"
     And I am in the Index Page
     Then I should see the details of all the Art Pieces
 

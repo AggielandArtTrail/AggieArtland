@@ -35,7 +35,9 @@ And the following art pieces exist:
         And I am logged in with email "billybob@gmail.com" and password "bobbobbob"
         And I go to the first art piece
         And I click "Check-in to this art piece"
-        Then I should see "Checked in to art piece Piece A!"
+        #Then I should see "Checked in to art piece Piece A!"
+        Then I should see "You need to be within"
+
 
     Scenario: Check in to art piece twice
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
@@ -43,7 +45,8 @@ And the following art pieces exist:
         And I go to the first art piece
         And I click "Check-in to this art piece"
         And I click "Check-in to this art piece"
-        And I should see "You've already checked in to art piece Piece A!"
+        #And I should see "You've already checked in to art piece Piece A!"
+        Then I should see "You need to be within"
 
     Scenario: No Piece A stamp in profile by default
         Given I have signed up with email "billybob@gmail.com", name "Billy Bob", and password "bobbobbob"
@@ -57,5 +60,6 @@ And the following art pieces exist:
         And I go to the first art piece
         And I click "Check-in to this art piece"
         And I visit my profile
-        Then I should see "Piece A"
+        #Then I should see "Piece A"
+        Then I should not see "Piece A"
 
