@@ -25,8 +25,8 @@ class UsersController < ApplicationController
     def stamps
       @user = User.find(params[:id])
       stamps_users = UserStamps.find_by_user_id(params[:id])
-      art_piece_ids = stamps_users.pluck(:art_pieces_id)
-      puts art_piece_ids
+      @art_piece_ids = stamps_users.pluck(:art_pieces_id)
+      puts @art_piece_ids
       render :stamps
     end
 
