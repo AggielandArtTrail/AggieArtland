@@ -1,4 +1,5 @@
 class ArtPiece < ApplicationRecord
+    has_one_attached :photo
     validates_presence_of :name, :address
     geocoded_by :address
     after_validation :geocode, if: :address_changed?
@@ -15,6 +16,14 @@ class ArtPiece < ApplicationRecord
     def get_icon_src
         if has_icon?
             icon_name
+        else
+            'https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg'
+        end
+    end
+
+    def get_icon
+        if  self.photo.attached?
+            self.photo
         else
             'https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg'
         end

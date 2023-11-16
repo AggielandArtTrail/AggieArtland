@@ -4,11 +4,7 @@
 <div id="art_pieces" class="container mt-4" >
   <% @art_pieces.each do |art_piece| %>
     <div class="card p-3 mb-3" style="background-color: #f5f5dc;">
-      <% if art_piece.has_icon? %>
-        <%= image_tag art_piece.icon_name, size: "100x100" %>
-      <% else %>
-        <%= image_tag "https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg", size: "100x100" %>
-      <% end %>
+      <%= image_tag art_piece.get_icon, size: "100x100" %>
 
       <%= render art_piece %>
       <%= link_to "Show this art piece", art_piece, class: "btn btn-primary" %>

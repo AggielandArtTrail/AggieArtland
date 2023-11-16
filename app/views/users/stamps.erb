@@ -7,11 +7,7 @@
         <div class="position-relative" style="width: 100pt; height: 100pt;">
           <div class="position-absolute" style="opacity: <%= (@user.has_stamp(art_piece) ? '1' : '0.5') %>;">
             <div class="d-flex justify-content-center">
-              <% if art_piece.has_icon? %>
-                <%= image_tag art_piece.icon_name, class: 'img-fluid stamp-icon' %>
-              <% else %>
-                <%= image_tag 'https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg', class: 'img-fluid stamp-icon' %>
-              <% end %>
+              <%= image_tag art_piece.get_icon, class: 'img-fluid stamp-icon' %>
             </div>
           </div>
           <% if @user.has_stamp(art_piece) %>

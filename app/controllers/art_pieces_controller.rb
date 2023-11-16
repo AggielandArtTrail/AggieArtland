@@ -139,6 +139,6 @@ class ArtPiecesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def art_piece_params
-      params.require(:art_piece).permit(:name, :description, :address, :latitude, :longitude,:artist)
+      params.require(:art_piece).permit(:name, :description, :address, :latitude, :longitude, :artist, :photo)
     end
 end

@@ -102,3 +102,5 @@ gem 'jasmine', '3.1.0'
 gem 'jasmine-jquery-rails'
 
 gem 'jquery-rails', '~> 4.4'
+
+gem 'aws-sdk-s3', require: false
