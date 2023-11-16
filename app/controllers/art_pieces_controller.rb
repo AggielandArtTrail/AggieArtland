@@ -91,6 +91,26 @@ class ArtPiecesController < ApplicationController
     dist_pretty = art_piece.distance_to_pretty(lat, lon)
 
     flash_add = ""
+
+    user_stamps = ::UserStamps.new 
+
+    puts dist_miles
+
+    if UserStamps.entry_exists?(user_id, params[:id])
+      puts "James Allison"
+      flash_add = "You've already checked in to art piece " + art_piece.name + '!'
+    elsif dist_miles > 1094697000000000000 # 500 ft
+      puts dist_miles
+      flash_add = "You need to be within 500 feet of the art piece to check in. You are currently " + dist_pretty + ' away.'
+    else
+      flash_add = 'Checked in to art piece ' + art_piece.name + '!'
+      stamp_entry = UserStamps.create(users_id: user_id, art_pieces_id: params[:id])
+      if stamp_entry.valid?
+        flash_add = 'Checked in to art piece ' + art_piece.name + '!'
+      else
+        flash_add = 'Failed to check in!!'
+      end
+    end
     
     if user.has_stamp(art_piece)
       flash_add = "You've already checked in to art piece " + art_piece.name + '!'
@@ -99,6 +119,7 @@ class ArtPiecesController < ApplicationController
     else
       flash_add = 'Checked in to art piece ' + art_piece.name + '!'
       user.set_stamp(art_piece, true)
+      
     end
 
     flash_add += Badge.check_all_badges(user)
