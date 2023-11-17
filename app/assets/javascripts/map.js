@@ -14,7 +14,7 @@ function initMap() {
     position: {lat: latitude, lng: longitude},
     map: map,
     title: 'Your Location',
-    icon: '/assets/red-dot.png'
+    icon: './assets/images/red-dot.png'
   });
 
   if (typeof artPieces !== 'undefined' && Array.isArray(artPieces)) {
