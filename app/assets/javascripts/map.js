@@ -25,7 +25,7 @@ function initMap() {
         position: {lat: artPiece.latitude, lng: artPiece.longitude},
         map: map,
         title: artPiece.name,
-        icon: '/assets/blue-dot.png'
+        icon: '/assets/images/blue-dot.png'
       });
 
       marker.addListener('click', function () {
