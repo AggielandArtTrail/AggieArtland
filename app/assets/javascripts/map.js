@@ -30,7 +30,7 @@ function initMap() {
 
       marker.addListener('click', function () {
         var artImageUrl = '/assets/art_piece_icon_' + artPiece.id + '.png';
-        var defaultImageUrl = '/assets/default_art.png';
+        var defaultImageUrl = 'https://aggie-art-public.s3.us-east-2.amazonaws.com/default_art.png';
 
         var img = new Image();
         img.onload = function() {
