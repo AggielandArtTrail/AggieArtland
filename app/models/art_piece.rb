@@ -7,7 +7,8 @@ class ArtPiece < ApplicationRecord
 
     def get_icon
         if  self.photo.attached?
-            self.photo
+            # self.photo
+            Rails.application.routes.url_helpers.rails_blob_url(self.photo, only_path: true)
         else
             'https://aggie-art-public.s3.us-east-2.amazonaws.com/default_art.png'
         end

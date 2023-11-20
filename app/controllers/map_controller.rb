@@ -1,6 +1,6 @@
 class MapController < ApplicationController
     def show
-        @art_pieces = ArtPiece.all
+        @art_pieces_json = ArtPiece.all.to_json(:methods => :get_icon)
     end
 
     def updateloc
