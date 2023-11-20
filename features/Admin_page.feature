@@ -50,7 +50,7 @@ Feature: Admin Page
 
   Scenario: No Art Piece Icon
     Given I am in the show art piece with id -500
-    Then I should see the image "93ae515eb75b21f3af334fd3888ee367.jpg"
+    Then I should see the image "default_art.png"
 
   Scenario: Create a New Art Piece with wrong address
     Given I am in the Index page 
