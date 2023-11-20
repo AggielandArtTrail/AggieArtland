@@ -5,27 +5,12 @@ class ArtPiece < ApplicationRecord
     after_validation :geocode, if: :address_changed?
     validates_presence_of :geocode
 
-    def has_icon?
-        File.exist?(Rails.root.join('app', 'assets', 'images', icon_name))
-    end
-
-    def icon_name
-        'art_piece_icon_' + id.to_s + '.png'
-    end
-
-    def get_icon_src
-        if has_icon?
-            icon_name
-        else
-            'https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg'
-        end
-    end
-
     def get_icon
         if  self.photo.attached?
-            self.photo
+            # self.photo
+            Rails.application.routes.url_helpers.rails_blob_url(self.photo, only_path: true)
         else
-            'https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg'
+            'https://aggie-art-public.s3.us-east-2.amazonaws.com/default_art.png'
         end
     end
 

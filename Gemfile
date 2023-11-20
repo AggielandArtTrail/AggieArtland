@@ -44,10 +44,6 @@ gem "bootsnap", require: false
 
 gem 'bcrypt', '~> 3.1.7'
 
-# image processing
-gem "mini_magick"
-
-
 #Bootstrap
 gem 'bootstrap', '~> 5.1'
 
