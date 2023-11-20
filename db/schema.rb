@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_16_072542) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_19_153926) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -41,13 +41,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_072542) do
 
   create_table "art_pieces", force: :cascade do |t|
     t.string "name"
-    t.text "description"
+    t.string "description"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "artist"
+    t.string "website_link"
     t.index ["latitude"], name: "index_art_pieces_on_latitude"
     t.index ["longitude"], name: "index_art_pieces_on_longitude"
   end
@@ -79,6 +80,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_072542) do
     t.index ["longitude"], name: "index_locations_on_longitude"
   end
 
+  create_table "user_stamps", force: :cascade do |t|
+    t.integer "users_id"
+    t.integer "art_pieces_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["art_pieces_id"], name: "index_user_stamps_on_art_pieces_id"
+    t.index ["users_id"], name: "index_user_stamps_on_users_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -94,4 +104,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_072542) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "user_stamps", "art_pieces", column: "art_pieces_id", on_delete: :cascade
+  add_foreign_key "user_stamps", "users", column: "users_id", on_delete: :cascade
 end
