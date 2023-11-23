@@ -22,6 +22,7 @@
 
       <%= render art_piece %>
       <%= link_to "Show this art piece", art_piece, class: "btn btn-primary" %>
+      <%= link_to "View on website", art_piece.website_link , class: "btn btn-primary mt-1" %>
       <p>Distance to you: <%= art_piece.distance_to_pretty(session[:latitude].to_f, session[:longitude].to_f) %></p>
 
     </div>
