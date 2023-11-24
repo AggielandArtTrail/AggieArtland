@@ -38,6 +38,7 @@ class UsersController < ApplicationController
 
     def clear_stamps
       current_user.clear_stamps()
+      UserStamps.where(users_id:current_user.id).destroy_all
       flash[:notice] = 'Stamp collection reset successfully.'
       redirect_to stamps_path(current_user)
     end
@@ -66,6 +67,12 @@ class UsersController < ApplicationController
       end
     
       redirect_to admin_panel_users_path, notice: notice
+    end
+
+    def engagement_tracking
+      time = params[:time]
+      @stamps_users = UserStamps.find_recordy_by_time(time)
+      render :engagement_tracking
     end
     
     

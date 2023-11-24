@@ -11,4 +11,8 @@ class UserStamps < ApplicationRecord
         where(users_id: user_id)
     end
 
+    def self.find_recordy_by_time(time)
+        where('created_at >= ?', 1.hour.ago).count
+    end
+
 end

@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   post 'logout', to: 'sessions#destroy'
   get  'logout', to: 'sessions#destroy'
 
+  get '/engagement_tracking/:time/', to: 'users#engagement_tracking', as: 'engagement_tracking'
+
   get '/clear_stamps', to: 'users#clear_stamps', as: 'clear_stamps'
   get '/clear_badges', to: 'users#clear_badges', as: 'clear_badges'
 
