@@ -62,6 +62,7 @@ class ArtPiecesController < ApplicationController
 
   # DELETE /art_pieces/1 or /art_pieces/1.json
   def destroy
+    UserStamps.where(art_pieces_id:@art_piece.id).destroy_all
     @art_piece.destroy
 
     respond_to do |format|
