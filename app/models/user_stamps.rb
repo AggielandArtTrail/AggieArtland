@@ -15,4 +15,12 @@ class UserStamps < ApplicationRecord
         where('created_at >= ?', 1.hour.ago).count
     end
 
+    def self.find_recordy_by_day(time)
+        where('created_at >= ?', 24.hour.ago).count
+    end
+
+    def self.find_recordy_by_week(time)
+        where('created_at >= ?', 148.hour.ago).count
+    end
+
 end

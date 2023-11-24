@@ -45,6 +45,9 @@ class UsersController < ApplicationController
     
     def admin_panel
       @users = User.all
+      @stamps_users = UserStamps.find_recordy_by_time(1)
+      @stamps_users_day = UserStamps.find_recordy_by_day(1)
+      @stamps_users_week = UserStamps.find_recordy_by_day(1)
       if params[:search].present?
         @users = @users.where("email LIKE ? OR name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
       end
