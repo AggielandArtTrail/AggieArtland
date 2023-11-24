@@ -127,29 +127,6 @@ class ArtPiecesController < ApplicationController
     redirect_to show_art_piece_path(art_piece)
   end
 
-  def upload_icon
-    art_piece = ArtPiece.find_by(id: params[:id])
-    icon = params[:picture]
-
-    image = MiniMagick::Image.open(File.open(params[:picture].tempfile))
-    image.resize "500x500"
-
-    filename = 'art_piece_icon_' + art_piece.id.to_s + '.png'
-    # folder = Rails.root.join('public', 'icons')
-    folder = Rails.root.join('app', 'assets', 'images')
-    FileUtils.mkdir_p(folder) unless File.exist?(folder)
-
-    path = File.join folder, filename
-
-    # File.open(path, 'wb') do |file|
-    #   file.write(icon.read)
-    # end
-    image.write(path)
-
-    flash[:notice] = 'Art piece icon successfully changed.'
-    redirect_to show_art_piece_path(art_piece)
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_art_piece
@@ -158,6 +135,6 @@ class ArtPiecesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def art_piece_params
-      params.require(:art_piece).permit(:name, :description, :address, :latitude, :longitude,:artist)
+      params.require(:art_piece).permit(:name, :description, :address, :latitude, :longitude, :artist,:website_link, :photo)
     end
 end

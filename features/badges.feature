@@ -47,6 +47,11 @@ And the following badges exist:
         And I visit my profile
         Then I should see "One stamp"
 
+    Scenario: See one-stamp badge icon in profile
+        Given I check in to art piece 1
+        And I visit my profile
+        Then I should see the image "default_art.png"
+
     Scenario: One-stamp badge marked as complete
         Given I check in to art piece 1
         And I go to badge 1

@@ -1,22 +1,8 @@
 <h1>Editing art piece</h1>
 
-<% if @art_piece.has_icon? %>
-  <%= image_tag @art_piece.icon_name, size: "100x100" %>
-<% else %>
-  <%= image_tag "https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg", size: "100x100" %>
-<% end %>
+<%= image_tag @art_piece.get_icon, size: "100x100" %>
 
 <%= render "form", art_piece: @art_piece %>
-
-<br><br>
-
-<p>Set art piece icon:
-</p>
-
-<%= form_with url: upload_art_icon_path(@art_piece), multipart: true do |form| %>
-  <%= file_field_tag :picture, id: 'art_icon_upload_field' %>
-  <%= form.submit 'Upload Icon'%>
-<% end %>
 
 <br><br>
 

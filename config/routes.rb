@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   patch 'password/reset/edit', to: 'password_resets#reset'
 
   get 'map', to: 'map#show'
-  post '/art_pieces/upload_icon/:id', to: 'art_pieces#upload_icon', as: 'upload_art_icon'
 
   post '/map/updateloc', to: 'map#updateloc', as: 'updateloc'
   

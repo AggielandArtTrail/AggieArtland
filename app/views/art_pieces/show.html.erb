@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 <div class="container mt-4">
-  <%= image_tag @art_piece.get_icon_src, size: "100x100" %>
+  <%= image_tag @art_piece.get_icon, size: "100x100" %>
 
   <%= render @art_piece %>
   <p>Your location: <%= @art_piece.format_location(session[:latitude].to_f, session[:longitude].to_f) %></p>

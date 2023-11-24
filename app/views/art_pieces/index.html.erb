@@ -1,26 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
-<h4 class="container mt-4" >List of Art Pieces</h4>
+<div class="row mb-10">
+  <div class="col-sm ">
+    <h4 class="container mt-4" >List of Art Pieces</h4>
+  </div>
+  <div class="col-sm 10">
+    <% if current_user.is_admin? %>
+      <div style="margin-top: 20px;">
+        <div class="text-center">
+          <%= link_to "New art piece", new_art_piece_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <div id="art_pieces" class="container mt-4" >
   <% @art_pieces.each do |art_piece| %>
     <div class="card p-3 mb-3" style="background-color: #f5f5dc;">
-      <% if art_piece.has_icon? %>
-        <%= image_tag art_piece.icon_name, size: "100x100" %>
-      <% else %>
-        <%= image_tag "https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg", size: "100x100" %>
-      <% end %>
+      <%= image_tag art_piece.get_icon, size: "100x100" %>
 
       <%= render art_piece %>
       <%= link_to "Show this art piece", art_piece, class: "btn btn-primary" %>
       <p>Distance to you: <%= art_piece.distance_to_pretty(session[:latitude].to_f, session[:longitude].to_f) %></p>
 
-    </div>
-  <% end %>
-  <% if current_user.is_admin? %>
-    <div style="margin-top: 10px;">
-      <div class="text-center">
-        <%= link_to "New art piece", new_art_piece_path, class: "btn btn-primary" %>
-      </div>
     </div>
   <% end %>
 </div>

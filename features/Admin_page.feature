@@ -50,4 +50,13 @@ Feature: Admin Page
 
   Scenario: No Art Piece Icon
     Given I am in the show art piece with id -500
-    Then I should see the image "93ae515eb75b21f3af334fd3888ee367.jpg"
+    Then I should see the image "default_art.png"
+
+  Scenario: Create a New Art Piece with wrong address
+    Given I am in the Index page 
+    When I click on the New art piece link
+    Then I should be redirected to the page
+    And I fill in "Name" with "New Art"
+    And I fill in "Address" with "Richardson Petroleum Engineering Building, 3116 TAMU, 245 Spence St, College Station, TX 77843"
+    And I press "Create Art piece" 
+    Then I should find "1 error prohibited this art_piece from being saved:"
