@@ -1,4 +1,4 @@
-<h4>Admin Panel</h4>
+<h4 style="color: blue;">Admin Panel</h4>
 
 <%= form_tag admin_panel_users_path, method: :get, class: 'form-inline mb-4' do %>
   <div class="form-group">
@@ -6,6 +6,40 @@
   </div>
   <%= submit_tag 'Search', class: 'btn btn-primary', style: 'margin-top: 15px;' %>
 <% end %>
+
+
+<h4 style="color: blue;">Engagement Tracking</h4>
+     
+<table class="table">
+  <thead>
+    <tr>
+      <th>Last Duration</th>
+      <th>Number of Stamps Collected</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+      <td>1 Hour</td>
+      <td> <%= @stamps_users %></td>
+      </tr>
+  </tbody>
+  <tbody>
+      <tr>
+      <td>1 Day</td>
+      <td> <%= @stamps_users_day %></td>
+      </tr>
+  </tbody>
+
+  <tbody>
+      <tr>
+      <td>1 Week</td>
+      <td> <%= @stamps_users_week %></td>
+      </tr>
+  </tbody>
+</table>
+
+
+<h4 style="color: blue;">Users</h4>
 
 <table class="table">
   <thead>

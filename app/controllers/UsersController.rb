@@ -24,6 +24,9 @@ class UsersController < ApplicationController
 
     def stamps
       @user = User.find(params[:id])
+      stamps_users = UserStamps.find_by_user_id(params[:id])
+      @art_piece_ids = stamps_users.pluck(:art_pieces_id)
+      puts @art_piece_ids
       render :stamps
     end
 
@@ -35,12 +38,16 @@ class UsersController < ApplicationController
 
     def clear_stamps
       current_user.clear_stamps()
+      UserStamps.where(users_id:current_user.id).destroy_all
       flash[:notice] = 'Stamp collection reset successfully.'
       redirect_to stamps_path(current_user)
     end
     
     def admin_panel
       @users = User.all
+      @stamps_users = UserStamps.find_recordy_by_time(1)
+      @stamps_users_day = UserStamps.find_recordy_by_day(1)
+      @stamps_users_week = UserStamps.find_recordy_by_day(1)
       if params[:search].present?
         @users = @users.where("email LIKE ? OR name LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
       end
@@ -63,6 +70,12 @@ class UsersController < ApplicationController
       end
     
       redirect_to admin_panel_users_path, notice: notice
+    end
+
+    def engagement_tracking
+      time = params[:time]
+      @stamps_users = UserStamps.find_recordy_by_time(time)
+      render :engagement_tracking
     end
     
     

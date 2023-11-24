@@ -69,15 +69,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_153926) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
+  create_table "user_stamps", force: :cascade do |t|
+    t.integer "users_id"
+    t.integer "art_pieces_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["latitude"], name: "index_locations_on_latitude"
-    t.index ["longitude"], name: "index_locations_on_longitude"
+    t.index ["art_pieces_id"], name: "index_user_stamps_on_art_pieces_id"
+    t.index ["users_id"], name: "index_user_stamps_on_users_id"
   end
 
   create_table "user_stamps", force: :cascade do |t|
@@ -95,9 +93,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_19_153926) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_type"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
+    t.string "user_type"
     t.integer "badges"
     t.integer "stamps"
   end
