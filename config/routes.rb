@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :blogs
 
   resources :badges
+  #resources :app_settings
 
   root :to => redirect('/login')
   get '/art_pieces/:id', to: 'art_pieces#show', as: 'show_art_piece'
@@ -30,6 +31,12 @@ Rails.application.routes.draw do
   get '/clear_stamps', to: 'users#clear_stamps', as: 'clear_stamps'
   get '/clear_badges', to: 'users#clear_badges', as: 'clear_badges'
 
+  get '/remove_badge_icon/:id', to: 'badges#remove_custom_icon', as: 'remove_badge_icon'
+  get '/remove_default_stamp_icon', to: 'app_settings#remove_default_stamp_icon', as: 'remove_default_stamp_icon'
+  get '/remove_default_badge_icon', to: 'app_settings#remove_default_badge_icon', as: 'remove_default_badge_icon'
+
+  get '/app_settings', to: 'app_settings#edit', as: 'app_setting'
+  patch '/app_settings', to: 'app_settings#update'
 
   get "password/reset", to: "password_resets#new"
   post 'password/reset', to: 'password_resets#forgot'

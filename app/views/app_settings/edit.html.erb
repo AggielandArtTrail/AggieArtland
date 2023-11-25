@@ -1,0 +1,16 @@
+<h1>Editing App Settings</h1>
+
+<%= render "form", app_settings: AppSettings.instance %>
+
+<br><br>
+
+<% if AppSettings.instance.default_stamp_icon.attached? %>
+  <%= link_to "Reset default stamp icon", remove_default_stamp_icon_path %>
+<% end %>
+<% if AppSettings.instance.default_badge_icon.attached? %>
+  <%= link_to "Reset default badge icon", remove_default_badge_icon_path %>
+<% end %>
+
+<div>
+  <%= link_to "Back to admin page", admin_panel_users_path %>
+</div>
