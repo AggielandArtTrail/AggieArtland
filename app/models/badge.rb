@@ -1,4 +1,5 @@
 class Badge < ApplicationRecord
+    has_one_attached :photo
 
     def self.check_all_badges(user)
         flash = ""
@@ -13,7 +14,17 @@ class Badge < ApplicationRecord
     end
 
     def get_icon
-        "https://cdn-icons-png.flaticon.com/512/3135/3135783.png"
+        if self.photo.attached?
+            self.photo
+        else
+            'https://aggie-art-public.s3.us-east-2.amazonaws.com/default_badge.png'
+        end
+    end
+
+    def remove_custom_icon
+        if self.photo.attached?
+            self.photo.purge
+        end
     end
 
     def handle_complete(user)

@@ -1,8 +1,14 @@
 <h1>Editing badge</h1>
 
+<%= image_tag @badge.get_icon, size: "100x100" %>
+
 <%= render "form", badge: @badge %>
 
 <br><br>
+
+<% if @badge.photo.attached? %>
+  <%= link_to "Remove custom icon", remove_badge_icon_path(@badge) %>
+<% end %>
 
 <div>
   <%= link_to "Show this badge", @badge %> |

@@ -6,7 +6,7 @@ class ArtPiece < ApplicationRecord
     validates_presence_of :geocode
 
     def get_icon
-        if  self.photo.attached?
+        if self.photo.attached?
             # self.photo
             Rails.application.routes.url_helpers.rails_blob_url(self.photo, only_path: true)
         else

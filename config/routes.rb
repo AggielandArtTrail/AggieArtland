@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get '/clear_stamps', to: 'users#clear_stamps', as: 'clear_stamps'
   get '/clear_badges', to: 'users#clear_badges', as: 'clear_badges'
 
+  get '/remove_badge_icon/:id', to: 'badges#remove_custom_icon', as: 'remove_badge_icon'
 
   get "password/reset", to: "password_resets#new"
   post 'password/reset', to: 'password_resets#forgot'
