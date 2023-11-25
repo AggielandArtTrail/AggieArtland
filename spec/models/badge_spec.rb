@@ -18,8 +18,20 @@ RSpec.describe Badge, type: :model do
       let(:badgeBAD) { FactoryBot.create(:badge, name:"Badge BAD", badge_type:"!!GOBBLEDYGOOK!!") }
         
       
-      it 'returns the right icon' do
-        expect(badge1.get_icon().include?("3135783.png")).to eq(true)
+      it 'returns the right default icon' do
+        expect(badge1.get_icon().include?("default_badge.png")).to eq(true)
+      end
+
+      it 'returns the right attached icon' do
+        badge1.photo.attach(io: File.open("./test/images/pipe.png"), filename: "pipe.png", content_type: "image/png")
+        url = Rails.application.routes.url_helpers.rails_blob_url(badge1.get_icon, only_path: true)
+        expect(url.include?('pipe.png')).to eq(true)
+      end
+
+      it 'removes the attached icon' do
+        badge1.photo.attach(io: File.open("./test/images/pipe.png"), filename: "pipe.png", content_type: "image/png")
+        badge1.remove_custom_icon
+        expect(badge1.get_icon().include?("default_badge.png")).to eq(true)
       end
   
       it 'does not give badges incorrectly' do

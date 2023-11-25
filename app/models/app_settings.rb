@@ -28,12 +28,18 @@ class AppSettings < ApplicationRecord
     def remove_default_stamp_icon
         if self.default_stamp_icon.attached?
             self.default_stamp_icon.purge
+            true
+        else
+            false
         end
     end
 
     def remove_default_badge_icon
         if self.default_badge_icon.attached?
             self.default_badge_icon.purge
+            true
+        else
+            false
         end
     end
 
