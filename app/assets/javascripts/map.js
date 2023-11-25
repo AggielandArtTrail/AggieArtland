@@ -25,7 +25,10 @@ function initMap() {
         position: {lat: artPiece.latitude, lng: artPiece.longitude},
         map: map,
         title: artPiece.name,
-        icon: 'https://aggie-art-public.s3.us-east-2.amazonaws.com/blue-dot.png'
+            icon: {
+      url: artPiece.get_icon, // The URL of the image file
+      scaledSize: new google.maps.Size(32, 32) // Sets the icon size
+    }
       });
 
       marker.addListener('click', function () {
