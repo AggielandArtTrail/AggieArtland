@@ -184,6 +184,11 @@ RSpec.describe UsersController, type: :controller do
       expect(user.get_earned_stamps().include?(art_piece)).to eq(true)
     end
 
+    it 'stamp returned in first n' do
+      user.set_stamp(art_piece, true)
+      expect(user.get_first_n_stamps(20).include?(art_piece)).to eq(true)
+    end
+
     it 'resets stamps' do
       user.set_stamp(art_piece, true)
       user.clear_stamps()
@@ -217,6 +222,11 @@ RSpec.describe UsersController, type: :controller do
     it 'retrieves badge as completed' do
       user.set_badge(badge, true)
       expect(user.get_earned_badges().include?(badge)).to eq(true)
+    end
+
+    it 'badge returned in first n' do
+      user.set_badge(badge, true)
+      expect(user.get_first_n_badges(20).include?(badge)).to eq(true)
     end
 
     it 'resets badges' do

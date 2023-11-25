@@ -42,6 +42,17 @@
   </div>
 
   <div>
+    <%= form.label :website_link, style: "display: block" %>
+    <%= form.text_field :website_link %>
+  </div>
+
+  <div>
+    <%= form.label "Icon", style: "display: block" %>
+    <%= form.file_field :photo %>
+  </div>
+
+  <br>
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

@@ -32,6 +32,12 @@ class BadgesController < ApplicationController
     # end
   end
 
+  def remove_custom_icon
+    badge = Badge.find_by(id: params[:id])
+    badge.remove_custom_icon
+    redirect_to badge
+  end
+
   # POST /badges or /badges.json
   def create
     @badge = Badge.new(badge_params)
@@ -78,6 +84,6 @@ class BadgesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def badge_params
-      params.require(:badge).permit(:name, :description, :badge_type, :requirement)
+      params.require(:badge).permit(:name, :description, :badge_type, :requirement, :photo)
     end
 end

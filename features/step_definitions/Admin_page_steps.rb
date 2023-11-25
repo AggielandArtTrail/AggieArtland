@@ -103,3 +103,7 @@ end
 Given('I go to the art pieces page') do
   visit art_pieces_path
 end
+
+Then('I should find {string}') do |str|
+  expect(page).to have_content(str)
+end

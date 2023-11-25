@@ -62,6 +62,7 @@ class ArtPiecesController < ApplicationController
 
   # DELETE /art_pieces/1 or /art_pieces/1.json
   def destroy
+    UserStamps.where(art_pieces_id:@art_piece.id).destroy_all
     @art_piece.destroy
 
     respond_to do |format|
@@ -91,43 +92,38 @@ class ArtPiecesController < ApplicationController
     dist_pretty = art_piece.distance_to_pretty(lat, lon)
 
     flash_add = ""
+
+    user_stamps = ::UserStamps.new 
+
+
+    if UserStamps.entry_exists?(user_id, params[:id])
+      flash_add = "You've already checked in to art piece " + art_piece.name + '!'
+    elsif dist_miles > 10000 # 500 ft
+      flash_add = "You need to be within 500 feet of the art piece to check in. You are currently " + dist_pretty + ' away.'
+    else
+      flash_add = 'Checked in to art piece ' + art_piece.name + '!'
+      stamp_entry = UserStamps.create(users_id: user_id, art_pieces_id: params[:id])
+      if stamp_entry.valid?
+        flash_add = 'Checked in to art piece ' + art_piece.name + '!'
+      else
+        flash_add = 'Failed to check in!!'
+      end
+    end
     
     if user.has_stamp(art_piece)
       flash_add = "You've already checked in to art piece " + art_piece.name + '!'
-    elsif dist_miles > 0.094697 # 500 ft
+    elsif dist_miles > 1000 # 500 ft
       flash_add = "You need to be within 500 feet of the art piece to check in. You are currently " + dist_pretty + ' away.'
     else
       flash_add = 'Checked in to art piece ' + art_piece.name + '!'
       user.set_stamp(art_piece, true)
+      
     end
 
     flash_add += Badge.check_all_badges(user)
 
     flash[:notice] = flash_add
     
-    redirect_to show_art_piece_path(art_piece)
-  end
-
-  def upload_icon
-    art_piece = ArtPiece.find_by(id: params[:id])
-    icon = params[:picture]
-
-    image = MiniMagick::Image.open(File.open(params[:picture].tempfile))
-    image.resize "500x500"
-
-    filename = 'art_piece_icon_' + art_piece.id.to_s + '.png'
-    # folder = Rails.root.join('public', 'icons')
-    folder = Rails.root.join('app', 'assets', 'images')
-    FileUtils.mkdir_p(folder) unless File.exist?(folder)
-
-    path = File.join folder, filename
-
-    # File.open(path, 'wb') do |file|
-    #   file.write(icon.read)
-    # end
-    image.write(path)
-
-    flash[:notice] = 'Art piece icon successfully changed.'
     redirect_to show_art_piece_path(art_piece)
   end
 
@@ -139,6 +135,6 @@ class ArtPiecesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def art_piece_params
-      params.require(:art_piece).permit(:name, :description, :address, :latitude, :longitude,:artist)
+      params.require(:art_piece).permit(:name, :description, :address, :latitude, :longitude, :artist,:website_link, :photo)
     end
 end

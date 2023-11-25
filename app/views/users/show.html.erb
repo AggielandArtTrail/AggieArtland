@@ -49,12 +49,8 @@
                 <% @user.get_first_n_stamps(5).each do |art_piece| %>
                   <div class="col-4 mb-3 position-relative">
                     <div class="position-relative" style="width: 100pt; height: 100pt; overflow: hidden;">
-                      <% if art_piece.has_icon? %>
-                        <%= image_tag art_piece.icon_name, class: "img-fluid stamp-icon", style: "max-width: 100%; height: auto; max-height: 100%;" %>
-                      <% else %>
-                        <%= image_tag "https://i.pinimg.com/originals/93/ae/51/93ae515eb75b21f3af334fd3888ee367.jpg", class: "img-fluid stamp-icon", style: "max-width: 100%; height: auto; max-height: 100%;" %>
-                      <% end %>
-                      <%= image_tag "https://png.pngtree.com/png-clipart/20230804/original/pngtree-vector-certified-stamp-insurance-control-checked-vector-picture-image_9512783.png", class: "img-fluid stamp-overlay position-absolute", style: "width: 100%; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
+                      <%= image_tag art_piece.get_icon, class: "img-fluid stamp-icon", style: "max-width: 100%; height: auto; max-height: 100%;" %>
+                      <%= image_tag AppSettings.instance.get_default_stamp_icon, class: "img-fluid stamp-overlay position-absolute", style: "width: 100%; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
                     </div>
                     <p class="text-center"><%= art_piece.name %></p>
                   </div>
