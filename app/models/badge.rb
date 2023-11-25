@@ -17,7 +17,7 @@ class Badge < ApplicationRecord
         if self.photo.attached?
             self.photo
         else
-            'https://aggie-art-public.s3.us-east-2.amazonaws.com/default_badge.png'
+            AppSettings.instance.get_default_badge_icon
         end
     end
 

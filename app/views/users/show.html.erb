@@ -48,7 +48,7 @@
                   <div class="col-4 mb-3 position-relative">
                     <div class="position-relative" style="width: 100pt; height: 100pt; overflow: hidden;">
                       <%= image_tag art_piece.get_icon, class: "img-fluid stamp-icon", style: "max-width: 100%; height: auto; max-height: 100%;" %>
-                      <%= image_tag "https://png.pngtree.com/png-clipart/20230804/original/pngtree-vector-certified-stamp-insurance-control-checked-vector-picture-image_9512783.png", class: "img-fluid stamp-overlay position-absolute", style: "width: 100%; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
+                      <%= image_tag AppSettings.instance.get_default_stamp_icon, class: "img-fluid stamp-overlay position-absolute", style: "width: 100%; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%);" %>
                     </div>
                     <p class="text-center"><%= art_piece.name %></p>
                   </div>
