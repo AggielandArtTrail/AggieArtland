@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/spec/controllers/blog_spec.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/spec/controllers/blog_spec.rb": {
         "lines": [
           1,
           null,
@@ -116,6 +116,7 @@
           1,
           1,
           1,
+          null,
           null,
           null,
           1,
@@ -167,7 +168,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/spec/rails_helper.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -239,7 +240,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/environment.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -248,7 +249,7 @@
           1
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/application.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/application.rb": {
         "lines": [
           1,
           null,
@@ -275,15 +276,17 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/boot.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/boot.rb": {
         "lines": [
+          1,
+          null,
           1,
           null,
           1,
           1
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/environments/test.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -353,7 +356,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/assets.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -369,7 +372,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/content_security_policy.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -380,38 +383,6 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/filter_parameter_logging.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/inflections.rb": {
-        "lines": [
           null,
           null,
           null,
@@ -430,7 +401,39 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/initializers/permissions_policy.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/initializers/filter_parameter_logging.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/initializers/inflections.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -445,7 +448,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/spec/factories/art_pieces.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/spec/factories/art_pieces.rb": {
         "lines": [
           1,
           null,
@@ -460,7 +463,22 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/spec/factories/user.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/spec/factories/badge.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/hectorcardenas/i5aa2/AggieArtland/spec/factories/user.rb": {
         "lines": [
           1,
           null,
@@ -481,7 +499,7 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/config/routes.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/config/routes.rb": {
         "lines": [
           1,
           1,
@@ -494,6 +512,9 @@
           1,
           1,
           1,
+          null,
+          1,
+          null,
           1,
           1,
           1,
@@ -507,6 +528,9 @@
           1,
           1,
           null,
+          1,
+          1,
+          null,
           null,
           1,
           1,
@@ -516,12 +540,15 @@
           1,
           1,
           null,
+          1,
+          null,
+          1,
           1,
           null,
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/helpers/application_helper.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -534,25 +561,25 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/helpers/art_pieces_helper.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/app/helpers/art_pieces_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/helpers/blog_helper.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/app/helpers/blog_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/helpers/profiles_helper.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/app/helpers/profiles_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/controllers/blogs_controller.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/app/controllers/blogs_controller.rb": {
         "lines": [
           null,
           1,
@@ -621,26 +648,26 @@
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/controllers/application_controller.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/models/blog_post.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/app/models/blog_post.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/models/application_record.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/hectorcardenas/i4blogp2/AggieArtland/app/models/user.rb": {
+      "/Users/hectorcardenas/i5aa2/AggieArtland/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -663,6 +690,20 @@
           null,
           1,
           0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
           0,
           null,
           0,
@@ -677,11 +718,30 @@
           null,
           1,
           0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1699664605
+    "timestamp": 1700877499
   }
 }

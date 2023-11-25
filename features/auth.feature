@@ -90,3 +90,17 @@ Given the following users exist:
         When I fill in "Password" with "newpass12"
         And I fill in "Password confirmation" with "newpass12"
 
+    Scenario: Go to edit page
+        Given I am logged in
+        And I am on the users profile page
+        When I click "Edit"
+        Then I should be on the user edit page
+
+    Scenario: Change name
+        Given I am logged in
+        And I am on the user edit page
+        When I fill in "Name" with "new_name"
+        And I press "Update"
+        Then I should be on the user edit page
+        And My name should be "new_name"
+

@@ -108,10 +108,11 @@ RSpec.describe BlogsController, type: :controller do
           end
 
 
-              it 'redirects to blog post' do
-                  put :update, params: { id: post3.id, blog_post: { title: "nvm", body: "thanks" } }
-                  expect(response).to redirect_to(blog_path(BlogPost.find_by(title:"nvm",body:"thanks").id))
-              end
+          it 'redirects to blog post' do
+              put :update, params: { id: post3.id, blog_post: { title: "nvm", body: "thanks" } }
+              expect(response).to redirect_to(blog_path(BlogPost.find_by(title:"nvm",body:"thanks").id))
+          end
+              
       end
       context 'when not logged in as admin' do
         let(:user) { FactoryBot.create(:user) }

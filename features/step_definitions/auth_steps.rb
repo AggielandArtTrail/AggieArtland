@@ -82,4 +82,20 @@ Given('I am on the reset password page') do ||
     visit password_reset_edit_path
 end
 
+Then('I should be on the user edit page') do ||
+    expect(page).to have_current_path(edit_user_path(@test_user.id))
+end
+
+Given('I am on the user edit page') do ||
+    visit edit_user_path(@test_user.id)
+end
+
+Then('My name should be {string}') do |string|
+    @test_user.reload
+    expect(@test_user.name).to eq(string)
+end
+
+Given('I am on the users profile page') do ||
+    visit user_path(@test_user.id)
+end
 
