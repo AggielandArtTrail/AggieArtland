@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   include ApplicationHelper
-  before_action :require_login, only: [:show]
+  before_action :require_login, only: [:show,:edit,:update]
   before_action :require_admin, only: [:admin_panel, :toggle_admin]
-  
+  before_action :authenticate_user, only: [:show,:edit,:update]
+
     def new
       @user = User.new
     end
@@ -19,7 +20,19 @@ class UsersController < ApplicationController
     end
 
     def show
-      @user = User.find(params[:id])
+
+    end
+
+    def edit
+
+    end
+
+    def update
+        if @user.update_column(:name,user_params[:name] )
+            redirect_to edit_user_path, notice: "Name has been changed."
+        else
+          redirect_to edit_user_path, notice: "Name could not be changed."
+        end
     end
 
     def stamps
@@ -96,6 +109,16 @@ class UsersController < ApplicationController
       unless current_user.is_admin?
         flash[:error] = 'You must be an admin to access this section.'
         redirect_to root_path
+      end
+    end
+
+    def authenticate_user
+      # Implement your authentication logic here
+      if session[:user_id] == (params[:id])
+        @user = User.find(params[:id])
+      else
+        @user = User.find(session[:user_id])
+        flash[:notice] = 'You cannot access this section.'
       end
     end
   end

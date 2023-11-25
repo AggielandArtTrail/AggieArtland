@@ -83,6 +83,38 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe 'GET #edit' do
+    let(:user) { FactoryBot.create(:user) }
+    before do
+      session[:user_id] = user.id
+    end
+    it 'renders edit page' do
+      get :edit, params: { id: user.id }
+
+      expect(response).to render_template(:edit)
+    end
+  end
+
+  describe 'PATCH #update' do
+    let(:user) { FactoryBot.create(:user) }
+    before do
+      session[:user_id] = user.id
+    end
+    it 'updates name' do
+      patch :update, params: { id: user.id, user:{name:"some_name"} }
+      user.reload
+      expect(user.name).to eq("some_name")
+    end
+    it 'handles update failure' do
+      allow_any_instance_of(User).to receive(:update_column).and_return(false)
+
+      patch :update, params: { id: user.id, user: { name: 'new_name' } }
+
+      expect(response).to redirect_to(edit_user_path)
+      expect(flash[:notice]).to eq('Name could not be changed.')
+    end
+  end
+
   describe 'POST #toggle_admin' do
     let(:admin_user) { FactoryBot.create(:admin_user) }
     let(:non_admin_user) { FactoryBot.create(:user) }
