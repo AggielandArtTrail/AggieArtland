@@ -52,7 +52,7 @@ function initMap() {
 
   function setInfoWindowContent(imageUrl, artPiece, marker) {
     var artPieceImage = '<img src="' + imageUrl + '" style="width: 100px; height: 100px;" />';
-    var artPieceLink = '<a href="/art_pieces/' + artPiece.id + '">View Art Piece</a>';
+    var artPieceLink = '<a href="' + artPiece.website_link +'">View Art Piece</a>';
     var checkinLink = '<a href="/art_pieces/checkin/' + artPiece.id + '">Check-in to Art Piece</a>';
     infoWindow.setContent(artPieceImage + '<br>' + "Art Piece: " + artPiece.name + '<br>' + artPieceLink + '<br>' + checkinLink);
     infoWindow.open(map, marker);
