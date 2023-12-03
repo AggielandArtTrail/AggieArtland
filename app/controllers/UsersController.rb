@@ -118,7 +118,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
       else
         @user = User.find(session[:user_id])
-        flash[:notice] = 'You cannot access this section.'
       end
     end
   end
