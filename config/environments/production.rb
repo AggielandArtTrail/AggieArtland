@@ -87,7 +87,7 @@ Rails.application.configure do
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
 
-  config.action_mailer.default_url_options = { host: "aggieland-art-trail-dd7c164683e4.herokuapp.com"}
+  config.action_mailer.default_url_options = { host: "https://art-trail-da20b627cfec.herokuapp.com"}
   
 
   config.action_mailer.delivery_method = :sendmail
