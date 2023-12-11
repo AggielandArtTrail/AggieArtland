@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
     def welcome_email(email)
-      mail(to: email, subject: 'Welcome to AggieArtLand')
+      mail(to: email, subject: 'Welcome to the Aggieland Art Trail')
     end
     def forgot_password(user)
       @user = user
