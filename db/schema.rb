@@ -39,9 +39,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_25_014846) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "app_settings", force: :cascade do |t|
+    t.integer "singleton_guard"
+    t.string "config_property1"
+    t.string "config_property2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["singleton_guard"], name: "index_app_settings_on_singleton_guard", unique: true
+  end
+
   create_table "art_pieces", force: :cascade do |t|
     t.string "name"
-    t.text "description"
+    t.string "description"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
@@ -67,6 +76,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_25_014846) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["latitude"], name: "index_locations_on_latitude"
+    t.index ["longitude"], name: "index_locations_on_longitude"
   end
 
   create_table "user_stamps", force: :cascade do |t|
