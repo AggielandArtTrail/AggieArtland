@@ -1,9 +1,8 @@
 class ArtPiece < ApplicationRecord
     has_one_attached :photo
-    validates_presence_of :name, :address
+    validates_presence_of :name, :address, :latitude, :longitude
     geocoded_by :address
     after_validation :geocode, if: :address_changed?
-    validates_presence_of :geocode
 
     def get_icon
         if self.photo.attached?
@@ -54,5 +53,4 @@ class ArtPiece < ApplicationRecord
         e = lon >= 0 ? (('%.3f' % lon) + "°E") : (('%.3f' % -lon) + "°W")
         n + " " + e
     end
-
 end

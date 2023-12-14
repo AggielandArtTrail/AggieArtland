@@ -4,6 +4,9 @@ class ArtPiecesController < ApplicationController
   # GET /art_pieces or /art_pieces.json
   def index
     @art_pieces = ArtPiece.all
+    if params[:search].present?
+      @art_pieces = @art_pieces.where("name LIKE ?", "%#{params[:search]}%")
+    end
   end
 
   # GET /art_pieces/1 or /art_pieces/1.json
