@@ -23,16 +23,28 @@
 <% end %>
 
 
-<div id="art_pieces" class="container mt-4" >
+<div id="art_pieces_main" class="container mt-4" >
   <% @art_pieces.each do |art_piece| %>
-    <div class="card p-3 mb-3" style="background-color: #f5f5dc;">
-      <%= image_tag art_piece.get_icon, size: "100x100" %>
+    <div class="card">
+      <div class="card-header" id="<%=art_piece.name%>">
+        <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="<%='#id'+art_piece.id.to_s%>" aria-controls="<%="id"+art_piece.id.to_s%>">
+              <%=art_piece.name%>
+            </button>
+        </h5>
+      </div>
 
-      <%= render art_piece %>
-      <%= link_to "Show this art piece", art_piece, class: "btn btn-primary" %>
-      <%= link_to "View on website", art_piece.website_link , class: "btn btn-primary mt-1" %>
-      <p>Distance to you: <%= art_piece.distance_to_pretty(session[:latitude].to_f, session[:longitude].to_f) %></p>
+      <div id="<%="id"+art_piece.id.to_s%>" class="collapse show">
+        <div class="card p-3 mb-3" style="background-color: #f5f5dc;">
+          <%= image_tag art_piece.get_icon, size: "100x100" %>
 
+          <%= render art_piece %>
+          <%= link_to "Show this art piece", art_piece, class: "btn btn-primary" %>
+          <%= link_to "View on website", art_piece.website_link , class: "btn btn-primary mt-1" %>
+          <p>Distance to you: <%= art_piece.distance_to_pretty(session[:latitude].to_f, session[:longitude].to_f) %></p>
+
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
