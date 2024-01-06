@@ -5,7 +5,7 @@ class ArtPiecesController < ApplicationController
   def index
     @art_pieces = ArtPiece.all
     if params[:search].present?
-      @art_pieces = @art_pieces.where("name LIKE ?", "%#{params[:search]}%")
+      @art_pieces = @art_pieces.where("lower(name) LIKE ?", "%#{params[:search]}%")
     end
   end
 
