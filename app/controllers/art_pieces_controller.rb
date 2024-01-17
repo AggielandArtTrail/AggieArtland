@@ -3,7 +3,7 @@ class ArtPiecesController < ApplicationController
 
   # GET /art_pieces or /art_pieces.json
   def index
-    @art_pieces = ArtPiece.all
+    @art_pieces = ArtPiece.all.order(:name)
     if params[:search].present?
       @art_pieces = @art_pieces.where("lower(name) LIKE ?", "%#{params[:search]}%")
     end
