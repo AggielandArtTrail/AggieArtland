@@ -2,7 +2,8 @@ class ArtPiece < ApplicationRecord
     has_one_attached :photo
     validates_presence_of :name, :address, :latitude, :longitude
     geocoded_by :address
-    after_validation :geocode, if: :address_changed?
+    before_validation :geocode, if: :address_changed?
+    
 
     def get_icon
         if self.photo.attached?
